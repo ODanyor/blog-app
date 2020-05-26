@@ -21,13 +21,14 @@ router.get("/", authenticated, (req, res) => {
 // ROUTE: /api/user
 // DESC: Update account credentials
 router.post("/", authenticated, (req, res) => {
-  return;
+  const credentials = req.body.credentials;
+  return updateAccountCredentials(res, credentials);
 });
 
 // ROUTE: /api/user/delete
 // DESC: Delete account
 router.delete("/", authenticated, (req, res) => {
-  return;
+  return deleteAccount(req, res);
 });
 
 // ROUTE: /api/user/:user_id
