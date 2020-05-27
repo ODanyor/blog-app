@@ -31,7 +31,7 @@ router.delete("/", authenticated, (req, res) => {
   return deleteAccount(req, res);
 });
 
-// ROUTE: /api/user/:user_id
+// ROUTE: /api/user/user_id
 // DESC: Get a specific user as a user
 router.get("/:user_id", authenticated, (req, res) => {
   return getUserCredentials(res, req.params.user_id);

@@ -4,6 +4,9 @@ const {
   validateLoginCredentials,
 } = require("../utils/validation");
 const { JWT_token } = require("../utils/token");
+const { updatePostAuthor } = require("./post");
+const { updateCommentAuthor } = require("./comment");
+const { updateLikeAuthor } = require("./like");
 
 exports.getAccountCredentials = (req, res) => {
   User.findById(req.id)
@@ -17,15 +20,27 @@ exports.getAccountCredentials = (req, res) => {
 };
 
 exports.updateAccountCredentials = (res, credentials) => {
-  User
-    .findByIdAndUpdate(req.id, { $set: { ...credentials } })
-    .then((result) => res.status(200).json({ data: result }))
+  User.findByIdAndUpdate(req.id, { $set: { ...credentials } })
+    .then((result) => {
+      const author = {
+        user_id: credentials._id,
+        full_name: credentials.full_name,
+        email: credentials.email,
+        avatar: credentials.avatar,
+      };
+      updatePostAuthor(res, author);
+      updateCommentAuthor(res, author);
+      updateLikeAuthor(res, author);
+      return res.status(200).json({ data: result });
+    })
     .catch((err) => res.status(400).json({ error: err.code }));
 };
 
 exports.deleteAccount = (req, res) => {
   User.findByIdAndDelete(req.id)
-    .then(() => res.status(200).json({ message: "Account was deleted successfuly." }))
+    .then(() =>
+      res.status(200).json({ message: "Account was deleted successfuly." })
+    )
     .catch((err) => res.status(400).json({ error: err.code }));
 };
 

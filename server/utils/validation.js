@@ -52,3 +52,26 @@ exports.validateLoginCredentials = (credentials) => {
 
   return { errors };
 };
+
+exports.validatePost = (post) => {
+  let errors = new Object();
+
+  if (this.is.Empty(post.content.title)) {
+    errors.title = "Must not be empty.";
+  }
+  if (this.is.Empty(post.content.text)) {
+    errors.text = "Must not be empty.";
+  }
+
+  return { errors };
+};
+
+exports.validateComment = (comment) => {
+  let errors = new Object();
+
+  if (this.is.Empty(comment.comment)) {
+    errors.comment = "Must not be empty.";
+  }
+
+  return { errors };
+};

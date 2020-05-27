@@ -28,9 +28,15 @@ mongoose
 
 // API objects
 const user = require("./routes/api/user");
+const post = require("./routes/api/post");
+const like = require("./routes/api/like");
+const comment = require("./routes/api/comment");
 
 // Routes
 app.use("/api/user", user);
+app.use("/api/post", post);
+app.use("/api/like", like);
+app.use("/api/comment", comment);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
