@@ -10,7 +10,7 @@ const {
   getUserCredentials,
   signUp,
   singIn,
-} = require("../../functions/user");
+} = require("../../controllers/user");
 
 // ROUTE: /api/user
 // DESC: Get account credentials

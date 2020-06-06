@@ -3,7 +3,7 @@ const router = express.Router();
 const { authenticated } = require("../../utils/auth");
 
 // Functions
-const { makeLikeAndUnlike } = require("../../functions/like");
+const { makeLikeAndUnlike } = require("../../controllers/like");
 
 // ROUTE: POST api/like
 // DESC: Make a like

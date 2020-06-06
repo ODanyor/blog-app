@@ -3,7 +3,7 @@ const router = express.Router();
 const { authenticated } = require("../../utils/auth");
 
 // Functions
-const { getPosts, makePost, deletePost } = require("../../functions/post");
+const { getPosts, makePost, deletePost } = require("../../controllers/post");
 
 // ROUTE: GET /api/post
 // DESC: Get all following posts

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { authenticated } = require("../../utils/auth");
 // Functions
-const { postComment, deleteComment } = require("../../functions/comment");
+const { postComment, deleteComment } = require("../../controllers/comment");
 
 // ROUTE: POST api/comment
 // DESC: Post a comment
