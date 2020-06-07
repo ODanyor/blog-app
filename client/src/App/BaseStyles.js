@@ -11,6 +11,10 @@ export default createGlobalStyle`
 
   :root {
     --speed: 200ms;
+    
+    /* Filters */
+    --darker: 0.95;
+    --lighter: 1.05;
   }
   
   body {
@@ -18,6 +22,10 @@ export default createGlobalStyle`
     ${font.regular};
     background-color: ${color.backgroundLightest}
   };
+
+  ul {
+    list-style: none;
+  }
 
   input {
     border: none;

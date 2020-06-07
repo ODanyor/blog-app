@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { SearchBar, SearchIcon, SearchInput } from "./styles";
 
-// Hooks
-import { useFocusHandle } from "../../hooks";
-
 const index = () => {
   const [focused, setFocused] = useState(false);
   const focusHandle = () => setFocused(!focused);
 
   return (
-    <SearchBar focus={focused}>
+    <SearchBar focused={focused}>
       <SearchIcon>🔍</SearchIcon>
       <SearchInput
         placeholder="Search here ..."

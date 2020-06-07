@@ -1,1 +1,1 @@
-export { useFocusHandle } from "./useFocousHandle";
+export { useOutsideClickHandle } from "./useOutsideClickHandle";

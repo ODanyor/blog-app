@@ -26,7 +26,9 @@ export const color = {
 
 export const sizes = {
   backButtonSize: `min-width: ${40}px; min-height: ${40}px;`,
+
   navbarWidth: 990,
+  navbarHeight: 54,
 };
 
 export const font = {

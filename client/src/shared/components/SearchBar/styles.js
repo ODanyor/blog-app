@@ -9,7 +9,8 @@ export const SearchBar = styled.div`
   align-items: center;
   margin: 0 2rem;
   border-radius: 15px;
-  background: ${({ focus }) => (focus ? color.secondary : color.borderLight)};
+  background: ${({ focused }) =>
+    focused ? color.secondary : color.backgroundLight};
   overflow: hidden;
 `;
 
