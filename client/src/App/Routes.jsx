@@ -9,8 +9,8 @@ const Routes = () => {
   return (
     <Router history={history}>
       <Switch>
-        {/* <Redirect from="/" to="/home" /> */}
-        <Route path="/" component={Guest} />
+        {/* <Redirect from="/" to="/explore" /> */}
+        <Route path="/" render={Guest} />
       </Switch>
     </Router>
   );

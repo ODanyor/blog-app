@@ -11,9 +11,10 @@ import {
 // Components
 import {
   BackButton,
-  SearchBar,
+  Input,
   Button,
   BurgerButton,
+  Link,
 } from "../../../shared/components";
 
 // Hooks
@@ -28,11 +29,15 @@ const index = () => {
       <NavbarItems>
         <NavbarSideItems rightSideItems={false}>
           <BackButton icon="📣" />
-          <SearchBar />
+          <Input icon="🔍" placeholder="Search here ..." />
         </NavbarSideItems>
         <NavbarSideItems rightSideItems={true}>
-          <Button colored={false} content="Sign in" />
-          <Button colored={true} content="Sign up" />
+          <Link to="/login">
+            <Button colored={false} content="Sign in" />
+          </Link>
+          <Link to="/register">
+            <Button colored={true} content="Sign up" />
+          </Link>
         </NavbarSideItems>
         <BurgerButton trigger={toggle} />
       </NavbarItems>
@@ -48,8 +53,12 @@ const BurgerMenuPopup = ({ setOpen }) => {
   return (
     <BurgerMenu>
       <BurgerMenuItems ref={menuRef}>
-        <BurgerMenuItem>Sign in</BurgerMenuItem>
-        <BurgerMenuItem>Sign up</BurgerMenuItem>
+        <Link to="/login">
+          <BurgerMenuItem colored={false}>Sign in</BurgerMenuItem>
+        </Link>
+        <Link to="/register">
+          <BurgerMenuItem colored={true}>Sign up</BurgerMenuItem>
+        </Link>
       </BurgerMenuItems>
     </BurgerMenu>
   );

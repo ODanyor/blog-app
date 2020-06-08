@@ -13,8 +13,8 @@ export default createGlobalStyle`
     --speed: 200ms;
     
     /* Filters */
-    --darker: 0.95;
-    --lighter: 1.05;
+    --darker: 0.9;
+    --lighter: 1.1;
   }
   
   body {
@@ -30,5 +30,9 @@ export default createGlobalStyle`
   input {
     border: none;
     background: none;
+  }
+
+  button {
+    border: none;
   }
 `;

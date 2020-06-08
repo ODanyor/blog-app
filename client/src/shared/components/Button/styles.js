@@ -20,6 +20,6 @@ export const Button = styled.button`
   ${font.size(14)};
   transition: filter var(--speed);
   &:hover {
-    filter: brightness(0.95);
+    filter: brightness(var(--darker));
   }
 `;

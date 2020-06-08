@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { SearchBar, SearchIcon, SearchInput } from "./styles";
+import { Input, InputIcon, InputField } from "./styles";
 
-const index = () => {
+const index = ({ icon, placeholder }) => {
   const [focused, setFocused] = useState(false);
   const focusHandle = () => setFocused(!focused);
 
   return (
-    <SearchBar focused={focused}>
-      <SearchIcon>🔍</SearchIcon>
-      <SearchInput
-        placeholder="Search here ..."
+    <Input focused={focused}>
+      <InputIcon>{icon}</InputIcon>
+      <InputField
+        placeholder={placeholder}
         onFocus={focusHandle}
         onBlur={focusHandle}
       />
-    </SearchBar>
+    </Input>
   );
 };
 
