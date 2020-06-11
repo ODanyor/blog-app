@@ -7,10 +7,7 @@ import Routes from "./Routes";
 const index = () => {
   return (
     <GuestPage>
-      <Router>
-        <Navbar />
-        <Routes />
-      </Router>
+      <Navbar />
     </GuestPage>
   );
 };

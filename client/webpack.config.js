@@ -3,7 +3,9 @@ const HWP = require("html-webpack-plugin");
 
 module.exports = {
   entry: path.join(__dirname, "/src/index.js"),
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
+  },
   output: {
     path: path.join(__dirname, "/build"),
     filename: "index_bundle.js",
@@ -30,6 +32,11 @@ module.exports = {
         exclude: "/node_modules",
       },
     ],
+  },
+  resolve: {
+    // allows us to do absolute imports from "src"
+    modules: [path.join(__dirname, "src"), "node_modules"],
+    extensions: ["*", ".js", ".jsx"],
   },
   plugins: [new HWP({ template: path.join(__dirname, "/public/index.html") })],
 };

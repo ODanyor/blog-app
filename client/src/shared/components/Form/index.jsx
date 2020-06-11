@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, FormLabel, FormInput, FormButton } from "./styles";
 
 // Hooks
 import { useForm } from "react-hook-form";
 
-const index = ({ onSubmit, children }) => {
+// Functions
+import { credentialValidation } from "shared/functions/validateFunctions";
+
+const index = ({ onSubmit, button, children }) => {
   const { register, handleSubmit } = useForm();
-  const submit = (data) => onSubmit(data);
+  const submit = (data) => {
+    // Data validation goes here ...
+    const { errors } = credentialValidation(data);
+    console.log("Errors: ", errors);
+    onSubmit(data);
+  };
 
   return (
     <Form onSubmit={handleSubmit(submit)}>
       {children.map((child, index) => (
-        <FormLabelComponent child={child} key={index} register={register} />
+        <FormLabelComponent
+          child={child}
+          key={child.index}
+          register={register}
+        />
       ))}
-      <FormButton type="submit">Submit</FormButton>
+      <FormButton type="submit">{button}</FormButton>
     </Form>
   );
 };

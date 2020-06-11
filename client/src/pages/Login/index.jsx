@@ -8,11 +8,23 @@ import {
 } from "./styles";
 
 // Components
-import { Form, BackButton, Link } from "../../../shared/components";
+import { Form, BackButton, Link } from "shared/components";
 
 const formContent = [
-  { name: "email", placeholder: "", title: "Email", type: "text" },
-  { name: "password", placeholder: "", title: "Password", type: "password" },
+  {
+    name: "email",
+    placeholder: "",
+    title: "Email",
+    type: "text",
+    index: "email",
+  },
+  {
+    name: "password",
+    placeholder: "",
+    title: "Password",
+    type: "password",
+    index: "password",
+  },
 ];
 
 const index = () => {
@@ -26,7 +38,9 @@ const index = () => {
         {"/>"}
       </LoginPageIcon>
       <LoginPageTitle>Login to blog</LoginPageTitle>
-      <Form onSubmit={submitHandle}>{formContent}</Form>
+      <Form onSubmit={submitHandle} button="Login">
+        {formContent}
+      </Form>
       <LoginPageLinks>
         <Link to="/password_reset">
           <LoginPageLink>Forgot password?</LoginPageLink>
