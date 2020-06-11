@@ -2,7 +2,6 @@ import { is } from "shared/utils/validation";
 
 export const credentialValidation = (object) => {
   // full_name, avatar, email, password, confirmPassword
-  console.log("Object: ", object);
   let errors = {};
   for (let key in object) {
     if (key === "full_name") {

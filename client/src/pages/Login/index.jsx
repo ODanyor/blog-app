@@ -10,22 +10,8 @@ import {
 // Components
 import { Form, BackButton, Link } from "shared/components";
 
-const formContent = [
-  {
-    name: "email",
-    placeholder: "",
-    title: "Email",
-    type: "text",
-    index: "email",
-  },
-  {
-    name: "password",
-    placeholder: "",
-    title: "Password",
-    type: "password",
-    index: "password",
-  },
-];
+// Static
+import { loginForm } from "static/forms";
 
 const index = () => {
   const submitHandle = (data) => console.log("Submited data:", data);
@@ -39,7 +25,7 @@ const index = () => {
       </LoginPageIcon>
       <LoginPageTitle>Login to blog</LoginPageTitle>
       <Form onSubmit={submitHandle} button="Login">
-        {formContent}
+        {loginForm}
       </Form>
       <LoginPageLinks>
         <Link to="/password_reset">
