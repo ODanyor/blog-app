@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color, font } from "../../utils/styles";
+import { color, font } from "shared/utils/styles";
 
 export const Form = styled.form`
   padding: 10px 15px;
@@ -14,9 +14,11 @@ export const FormLabel = styled.label`
   flex-direction: column;
   background-color: ${color.backgroundLight};
   border-bottom: 2px solid
-    ${({ focused }) =>
-      focused ? color.backgroundDarkSecondary : color.textLight};
-
+    ${({ focused, isError }) => {
+      if (focused) return color.backgroundDarkSecondary;
+      else if (isError) return color.danger;
+      else return color.textLight;
+    }};
   color: ${({ focused }) =>
     focused ? color.backgroundDarkSecondary : color.textLight};
   ${font.bold};
@@ -26,6 +28,9 @@ export const FormLabel = styled.label`
 export const FormInput = styled.input`
   padding: 2px 0;
   ${font.size(19)};
+  &::placeholder {
+    color: ${({ isError }) => (isError ? color.warning : "")};
+  }
 `;
 
 export const FormButton = styled.button`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color, sizes } from "../../utils/styles";
+import { color, sizes } from "shared/utils/styles";
 
 export const BurgerButton = styled.ul`
   margin: 15px;

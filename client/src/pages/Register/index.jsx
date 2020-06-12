@@ -11,9 +11,9 @@ const index = () => {
   const [credentials, setCredentials] = useState({});
   const [count, setCount] = useState(0);
   const increment = () =>
-    count < formConent.length - 1 && setCount((prevState) => prevState + 1);
+    count < registerForm.length - 1 && setCount((prevState) => prevState + 1);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, errors) => {
     setCredentials((prevState) => ({
       ...prevState,
       ...data,

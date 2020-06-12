@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color, font } from "../../utils/styles";
+import { color, font } from "shared/utils/styles";
 
 export const Input = styled.div`
   max-width: 350px;

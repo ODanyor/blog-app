@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color, font } from "../../utils/styles";
+import { color, font } from "shared/utils/styles";
 
 // Button sizes: 30 --> 39
 // Button colors: white --> blue

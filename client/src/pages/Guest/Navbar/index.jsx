@@ -15,10 +15,10 @@ import {
   Button,
   BurgerButton,
   Link,
-} from "../../../shared/components";
+} from "shared/components";
 
 // Hooks
-import { useOutsideClickHandle } from "../../../shared/hooks";
+import { useOutsideClickHandle } from "shared/hooks";
 
 const index = () => {
   const [open, setOpen] = useState(false);

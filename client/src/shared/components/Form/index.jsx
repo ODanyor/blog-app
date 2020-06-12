@@ -8,11 +8,13 @@ import { useForm } from "react-hook-form";
 import { credentialValidation } from "shared/functions/validateFunctions";
 
 const index = ({ onSubmit, button, children }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, setValue, handleSubmit } = useForm();
+  const [errors, setErrors] = useState(null);
   const submit = (data) => {
-    // Data validation goes here ...
     const { errors } = credentialValidation(data);
-    console.log("Errors: ", errors);
+    if (Object.keys(errors).length > 0) {
+      return setErrors(errors);
+    }
     onSubmit(data);
   };
 
@@ -23,6 +25,8 @@ const index = ({ onSubmit, button, children }) => {
           child={child}
           key={child.index}
           register={register}
+          setValue={setValue}
+          error={errors && errors[child.name]}
         />
       ))}
       <FormButton type="submit">{button}</FormButton>
@@ -30,17 +34,31 @@ const index = ({ onSubmit, button, children }) => {
   );
 };
 
-const FormLabelComponent = ({ child, register }) => {
+const FormLabelComponent = ({ child, register, setValue, error }) => {
   const [focused, setFocused] = useState(false);
+  const [isError, setIsError] = useState(false);
   const focusHandle = () => setFocused(!focused);
 
+  useEffect(() => {
+    if (error) {
+      setIsError(true);
+      setValue(child.name, "");
+    } else setIsError(false);
+  }, [error]);
+
   return (
-    <FormLabel focused={focused} onFocus={focusHandle} onBlur={focusHandle}>
+    <FormLabel
+      focused={focused}
+      onFocus={focusHandle}
+      onBlur={focusHandle}
+      isError={isError}
+    >
       {child.title}
       <FormInput
         type={child.type}
         name={child.name}
-        placeholder={child.placeholder}
+        placeholder={isError ? error : child.placeholder}
+        isError={isError}
         ref={register}
       />
     </FormLabel>

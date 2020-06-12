@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color, sizes, font } from "../../../shared/utils/styles";
+import { color, sizes, font } from "shared/utils/styles";
 
 export const Navbar = styled.div`
   position: fixed;

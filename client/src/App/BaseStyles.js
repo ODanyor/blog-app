@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { font, color } from "../shared/utils/styles";
+import { font, color } from "shared/utils/styles";
 
 export default createGlobalStyle`
   *, *:after, *:before, input[type="search"] {

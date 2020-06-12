@@ -16,11 +16,11 @@ export const credentialValidation = (object) => {
     }
     if (key === "password") {
       if (!is.Password(object[key])) {
-        errors.password = "Password must be at least 8 characters.";
+        errors.password = "Password must be at least of 8 characters.";
       }
     }
-    if (key === "passwordConfirm") {
-      if (object["password"] !== object["confirmPassword"]) {
+    if (key === "confirmPassword") {
+      if (object["password"] !== object[key]) {
         errors.confirmPassword = "Password does not match.";
       }
     }
