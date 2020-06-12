@@ -12,9 +12,7 @@ const index = ({ onSubmit, button, children }) => {
   const [errors, setErrors] = useState(null);
   const submit = (data) => {
     const { errors } = credentialValidation(data);
-    if (Object.keys(errors).length > 0) {
-      return setErrors(errors);
-    }
+    if (Object.keys(errors).length > 0) setErrors(errors);
     onSubmit(data);
   };
 
