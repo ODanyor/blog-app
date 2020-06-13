@@ -93,7 +93,7 @@ exports.singIn = (res, credentilas) => {
     .then((result) => {
       if (!result) {
         return res
-          .status(400)
+          .status(404)
           .json({ error: "Wrong credentials. Please, try again." });
       }
       res.status(200).json({ token: JWT_token(result) });

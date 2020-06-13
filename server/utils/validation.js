@@ -4,11 +4,11 @@ exports.is = {
     return full_name.match(regExp);
   },
   Password: (pass) => {
-    const regExp = /^[a-zA-Z]{5,}[0-9]{3,}[a-zA-z]*$/;
+    const regExp = /^.{8,}$/;
     return pass.match(regExp);
   },
   Email: (email) => {
-    const regExp = /^[a-zA-z]+[0-9]*@\w*[.]+[a-z]+$/;
+    const regExp = /^.+@\w*[.]+[a-z]+$/;
     return email.match(regExp);
   },
   Empty: (value) => {
