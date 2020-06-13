@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RegisterPage } from "./styles";
+import { RegisterPage, RegisterPageTitle } from "./styles";
 
 // Components
 import { Form } from "shared/components";
@@ -24,7 +24,9 @@ const index = () => {
 
   return (
     <RegisterPage>
-      <h2>Registration: Step - {count + 1}</h2>
+      <RegisterPageTitle>
+        Registration: Step - {count + 1} / {registerForm.length}
+      </RegisterPageTitle>
       <Form
         onSubmit={onSubmit}
         button={count !== registerForm.length - 1 ? "Next" : "Register"}

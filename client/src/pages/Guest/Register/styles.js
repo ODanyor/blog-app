@@ -6,3 +6,9 @@ export const RegisterPage = styled.div`
   max-width: 540px;
   width: 100%;
 `;
+
+export const RegisterPageTitle = styled.h2`
+  padding: 30px 0 10px;
+  display: flex;
+  justify-content: center;
+`;

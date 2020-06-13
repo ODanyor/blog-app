@@ -28,9 +28,7 @@ const index = () => {
     <Navbar>
       <NavbarItems>
         <NavbarSideItems rightSideItems={false}>
-          <Link to="/">
-            <BackButton icon="📣" />
-          </Link>
+          <BackButton icon="📣" />
           <Input icon="🔍" placeholder="Search here ..." />
         </NavbarSideItems>
         <NavbarSideItems rightSideItems={true}>

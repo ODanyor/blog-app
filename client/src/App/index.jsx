@@ -7,11 +7,11 @@ import "./fontStyles.css";
 
 const index = () => {
   return (
-    <div>
+    <React.Fragment>
       <Routes />
       <BaseStyles />
       <h1>🚧 Blog is under 🔨</h1>
-    </div>
+    </React.Fragment>
   );
 };
 
