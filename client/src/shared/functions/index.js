@@ -1,0 +1,1 @@
+export { credentialValidation } from "./validateFunctions";

@@ -10,6 +10,7 @@ import { registerForm } from "static/forms";
 const index = () => {
   const [credentials, setCredentials] = useState({});
   const [count, setCount] = useState(0);
+
   const increment = () =>
     count < registerForm.length - 1 && setCount((prevState) => prevState + 1);
 
@@ -23,8 +24,11 @@ const index = () => {
 
   return (
     <RegisterPage>
-      <h2>Register Page</h2>
-      <Form onSubmit={onSubmit} button="Submit">
+      <h2>Registration: Step - {count + 1}</h2>
+      <Form
+        onSubmit={onSubmit}
+        button={count !== registerForm.length - 1 ? "Next" : "Register"}
+      >
         {registerForm[count]}
       </Form>
     </RegisterPage>

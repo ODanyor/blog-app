@@ -16,6 +16,7 @@ export const loginForm = [
 ];
 
 export const registerForm = [
+  // Registration step - 1
   [
     {
       name: "full_name",
@@ -32,6 +33,7 @@ export const registerForm = [
       index: "avatar",
     },
   ],
+  // Registration step - 2
   [
     {
       name: "email",

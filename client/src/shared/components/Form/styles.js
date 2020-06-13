@@ -33,6 +33,10 @@ export const FormInput = styled.input`
   }
 `;
 
+export const FormMessage = styled.div`
+  color: ${color.danger};
+`;
+
 export const FormButton = styled.button`
   cursor: pointer;
   margin: 10px 0;

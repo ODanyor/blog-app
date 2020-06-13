@@ -13,8 +13,13 @@ import { Form, BackButton, Link } from "shared/components";
 // Static
 import { loginForm } from "static/forms";
 
-const index = () => {
-  const submitHandle = (data) => console.log("Submited data:", data);
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "store/actions/userActions";
+
+const index = ({ login }) => {
+  const submitHandle = (data) => login(data);
 
   return (
     <LoginPage>
@@ -23,7 +28,7 @@ const index = () => {
         <BackButton icon="📣" />
         {"/>"}
       </LoginPageIcon>
-      <LoginPageTitle>Login to blog</LoginPageTitle>
+      <LoginPageTitle>Welcome! Get login</LoginPageTitle>
       <Form onSubmit={submitHandle} button="Login">
         {loginForm}
       </Form>
@@ -39,4 +44,14 @@ const index = () => {
   );
 };
 
-export default index;
+index.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (credentials) => dispatch(login(credentials)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);
