@@ -38,7 +38,7 @@ export const FormMessage = styled.div`
 `;
 
 export const FormButton = styled.button`
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   margin: 10px 0;
   height: 47px;
   ${font.bold};
@@ -48,6 +48,7 @@ export const FormButton = styled.button`
   background-color: ${color.backgroundDarkSecondary};
   transition: filter var(--speed);
   &:hover {
-    filter: brightness(var(--lighter));
+    filter: ${({ disabled }) =>
+      disabled ? "none" : "brightness(var(--lighter))"};
   }
 `;

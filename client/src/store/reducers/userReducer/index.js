@@ -1,7 +1,6 @@
 import * as TYPE from "store/types";
 
 const initialState = {
-  authToken: null,
   credentials: null,
 };
 

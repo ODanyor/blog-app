@@ -2,6 +2,7 @@ import * as TYPE from "store/types";
 
 const initialState = {
   error: null,
+  isRequested: false,
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -16,6 +17,12 @@ export const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
+      };
+    }
+    case TYPE.SET_REQUEST: {
+      return {
+        ...state,
+        isRequested: !state.isRequested,
       };
     }
     default:

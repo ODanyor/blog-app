@@ -3,9 +3,8 @@ import { Router, Route, Redirect } from "react-router-dom";
 
 import history from "browserHistory";
 import Authenticate from "Auth";
+import Determinant from "./Determinant";
 
-import User from "pages/User";
-import Guest from "pages/Guest";
 import Login from "pages/Guest/Login";
 import Register from "pages/Guest/Register";
 
@@ -15,11 +14,10 @@ const Routes = () => {
       <Redirect from="/" to="/authenticate" />
       <Route path="/authenticate" exact component={Authenticate} />
 
-      <Route path="/" exact component={User} />
+      <Route path="/" exact component={Determinant} />
 
-      <Route path="/explore" exact component={Guest} />
-      <Route path="/login" exact component={Login} />
-      <Route path="/register" exact component={Register} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
     </Router>
   );
 };

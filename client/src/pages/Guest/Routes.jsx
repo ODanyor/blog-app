@@ -1,8 +1,12 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 const Routes = () => {
-  return <Switch></Switch>;
+  return (
+    <Router>
+      <Switch></Switch>
+    </Router>
+  );
 };
 
 export default Routes;

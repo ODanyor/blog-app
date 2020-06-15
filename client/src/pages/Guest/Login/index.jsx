@@ -18,9 +18,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "store/actions/userActions";
 
-const index = ({ login, history }) => {
-  const submitHandle = (data) =>
-    login(data).then(() => history.push("/authenticate"));
+const index = ({ login }) => {
+  const submitHandle = (data) => login(data);
 
   return (
     <LoginPage>

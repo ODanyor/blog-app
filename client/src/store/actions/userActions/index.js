@@ -1,14 +1,21 @@
 import * as TYPE from "store/types";
+import history from "browserHistory";
 import api from "shared/utils/api";
 import { storeAuthToken, removeStoredAuthToken } from "shared/utils/authToken";
 
 export const login = (credentials) => async (dispatch) => {
+  dispatch({ type: TYPE.SET_REQUEST });
   await api
     .post("/api/user/sign_in", { credentials })
-    .then(({ data }) => storeAuthToken(data.token))
-    .catch(({ response }) =>
-      dispatch({ type: TYPE.SET_ERRORS, payload: response.data })
-    );
+    .then(({ data }) => {
+      dispatch({ type: TYPE.SET_REQUEST });
+      storeAuthToken(data.token);
+      history.push("/");
+    })
+    .catch(({ response }) => {
+      dispatch({ type: TYPE.SET_ERRORS, payload: response.data });
+      dispatch({ type: TYPE.SET_REQUEST });
+    });
 };
 
 export const register = (credentials) => async (dispatch) => {

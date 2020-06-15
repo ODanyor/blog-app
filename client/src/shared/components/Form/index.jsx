@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Form, FormLabel, FormInput, FormMessage, FormButton } from "./styles";
+import { Form, FormMessage } from "./styles";
+
+// Modules
+import FormLabelComponent from "./FormLabel";
+import FormButtonComponent from "./FormButton";
 
 // Hooks
 import { useForm } from "react-hook-form";
@@ -22,7 +26,10 @@ const index = (props) => {
 
   const submit = (data) => {
     const { errors } = credentialValidation(data);
+
     if (Object.keys(errors).length > 0) return setErrors(errors);
+    else setErrors(null);
+
     ui.error && cleanErrors();
     onSubmit(data);
   };
@@ -44,41 +51,10 @@ const index = (props) => {
         />
       ))}
       {ui.error && <FormMessage>{ui.error}</FormMessage>}
-      <FormButton type="submit">{button}</FormButton>
+      <FormButtonComponent type="submit" disabled={ui.isRequested}>
+        {button}
+      </FormButtonComponent>
     </Form>
-  );
-};
-
-const FormLabelComponent = ({ child, register, setValue, error, uiError }) => {
-  const [focused, setFocused] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const focusHandle = () => setFocused(!focused);
-
-  useEffect(() => {
-    if (error) {
-      setIsError(true);
-      setValue(child.name, "");
-    } else setIsError(false);
-
-    uiError && setValue(child.name, "");
-  }, [error, uiError]);
-
-  return (
-    <FormLabel
-      focused={focused}
-      onFocus={focusHandle}
-      onBlur={focusHandle}
-      isError={isError}
-    >
-      {child.title}
-      <FormInput
-        type={child.type}
-        name={child.name}
-        placeholder={isError ? error : child.placeholder}
-        isError={isError}
-        ref={register}
-      />
-    </FormLabel>
   );
 };
 
