@@ -1,4 +1,4 @@
-const { JWT_token_decoded } = require("./token");
+const { JWT_token_decrypted } = require("./token");
 
 exports.authenticated = (req, res, next) => {
   let token;
@@ -10,6 +10,10 @@ exports.authenticated = (req, res, next) => {
   } else {
     return res.status(403).json({ error: "Access forbidden" });
   }
-  req.id = JWT_token_decoded(res, token)._id;
+
+  const { error, decrypted } = JWT_token_decrypted(token);
+  if (error) return res.status(403).json({ error });
+
+  req.id = decrypted._id;
   next();
 };

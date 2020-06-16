@@ -3,10 +3,12 @@ const {
   validateRegisterCredentials,
   validateLoginCredentials,
 } = require("../utils/validation");
-const { JWT_token } = require("../utils/token");
+const { JWT_token_encrypted, JWT_token_decrypted } = require("../utils/token");
 const { updatePostAuthor } = require("./post");
 const { updateCommentAuthor } = require("./comment");
 const { updateLikeAuthor } = require("./like");
+const { send_mail } = require("../utils/mail");
+const { upload } = require("../utils/storage");
 
 exports.getAccountCredentials = (req, res) => {
   User.findById(req.id)
@@ -56,14 +58,14 @@ exports.getUserCredentials = (res, user_id) => {
     .catch((err) => res.status(400).json({ error: err.code }));
 };
 
-exports.signUp = (res, credentilas) => {
+exports.signUp = (res, credentilas, email_verification) => {
   // Step - 1: Validation
   const { errors } = validateRegisterCredentials(credentilas);
   if (Object.keys(errors).length !== 0) {
     return res.status(400).json({ errors });
   }
 
-  // Step - 2: Registration
+  // Step - 2: Checking for email existance
   delete credentilas["confirmPassword"];
   const new_user = new User(credentilas);
   User.findOne({ email: new_user.email })
@@ -73,10 +75,43 @@ exports.signUp = (res, credentilas) => {
           .status(406)
           .json({ error: "The email address is already registered." });
       }
-      new_user
-        .save()
-        .then((result) => res.status(201).json({ token: JWT_token(result) }))
-        .catch((err) => res.status(500).json({ error: err.code }));
+
+      if (email_verification) {
+        const { error, decrypted } = JWT_token_decrypted(
+          email_verification.secret_code_token
+        );
+        if (error) return res.status(403).json({ error });
+        if (decrypted.secret_code !== email_verification.secret_code)
+          return res.status(403).json({
+            error: "The secret code is not valid. Please, try again.",
+          });
+
+        new_user
+          .save()
+          .then((result) =>
+            res
+              .status(201)
+              .json({ token: JWT_token_encrypted({ _id: result._id }) })
+          )
+          .catch((err) => res.status(500).json({ error: err.code }));
+      } else {
+        const random_number = Math.floor(Math.random() * 1000000);
+        const secret_code_token = JWT_token_encrypted(
+          { secret_code: random_number },
+          "2m"
+        );
+
+        send_mail(
+          new_user.email,
+          "Email address verification",
+          "Prove your email address via this secret code.",
+          `This secret code expires after 2 minutes: ${random_number}`
+        )
+          .then(() =>
+            res.status(200).json({ email_verification: secret_code_token })
+          )
+          .catch((err) => res.status(500).json({ error: err }));
+      }
     })
     .catch((err) => res.status(400).json({ error: err.code }));
 };
@@ -96,7 +131,7 @@ exports.singIn = (res, credentilas) => {
           .status(404)
           .json({ error: "Wrong credentials. Please, try again." });
       }
-      res.status(200).json({ token: JWT_token(result) });
+      res.status(200).json({ token: JWT_token_encrypted({ _id: result._id }) });
     })
     .catch((err) => res.status(400).json({ error: err.code }));
 };

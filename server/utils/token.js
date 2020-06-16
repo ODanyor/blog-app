@@ -2,18 +2,18 @@ const jwt = require("jsonwebtoken");
 
 const encryptionKey = "secret";
 
-exports.JWT_token = (credentials) => {
+exports.JWT_token_encrypted = (object_to_enrypt, expiresIn) => {
   return jwt.sign(
-    {
-      _id: credentials._id,
-    },
-    encryptionKey
+    { ...object_to_enrypt },
+    encryptionKey,
+    expiresIn && { expiresIn }
   );
 };
 
-exports.JWT_token_decoded = (res, token) => {
-  return jwt.verify(token, encryptionKey, (err, decoded) => {
-    if (err) return res.status(403).json({ error: "Access forbidden." });
-    return decoded;
+exports.JWT_token_decrypted = (token_to_decrypt) => {
+  let error;
+  return jwt.verify(token_to_decrypt, encryptionKey, (err, decrypted) => {
+    if (err) error = "Invalid token! Access is forbidden.";
+    return { error, decrypted };
   });
 };

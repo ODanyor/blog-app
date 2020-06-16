@@ -8,8 +8,8 @@ const {
   updateAccountCredentials,
   deleteAccount,
   getUserCredentials,
-  signUp,
   singIn,
+  signUp,
 } = require("../../controllers/user");
 
 // ROUTE: /api/user
@@ -37,18 +37,19 @@ router.get("/:user_id", authenticated, (req, res) => {
   return getUserCredentials(res, req.params.user_id);
 });
 
-// ROUTE: /api/user/sign_up
-// DESC: Register a new user
-router.post("/sign_up", (req, res) => {
-  const credentials = req.body.credentials;
-  return signUp(res, credentials);
-});
-
 // ROUTE: /api/user/sign_in
 // DESC: Login a user
 router.post("/sign_in", (req, res) => {
   const credentials = req.body.credentials;
   return singIn(res, credentials);
+});
+
+// ROUTE: /api/user/sign_up
+// DESC: Register a new user
+router.post("/sign_up", (req, res) => {
+  const credentials = req.body.credentials;
+  const email_verification = req.body.email_verification;
+  return signUp(res, credentials, email_verification);
 });
 
 module.exports = router;

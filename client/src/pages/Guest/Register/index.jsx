@@ -7,19 +7,32 @@ import { Form } from "shared/components";
 // Static
 import { registerForm } from "static/forms";
 
-const index = () => {
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { register } from "store/actions/userActions";
+
+const index = ({ register }) => {
   const [credentials, setCredentials] = useState({});
   const [count, setCount] = useState(0);
 
-  const increment = () =>
-    count < registerForm.length - 1 && setCount((prevState) => prevState + 1);
+  const lengthOfForm = registerForm.length - 1;
+  const isNotLast = (length) => count !== length;
 
-  const onSubmit = (data, errors) => {
-    setCredentials((prevState) => ({
-      ...prevState,
-      ...data,
-    }));
-    increment();
+  const increment = () => {
+    count < lengthOfForm && setCount((prevState) => prevState + 1);
+  };
+
+  const onSubmit = (data) => {
+    if (isNotLast(lengthOfForm)) {
+      setCredentials((prevState) => ({
+        ...prevState,
+        ...data,
+      }));
+      increment();
+    } else {
+      register({ ...credentials, ...data });
+    }
   };
 
   return (
@@ -29,7 +42,7 @@ const index = () => {
       </RegisterPageTitle>
       <Form
         onSubmit={onSubmit}
-        button={count !== registerForm.length - 1 ? "Next" : "Register"}
+        button={isNotLast(lengthOfForm) ? "Next" : "Register"}
       >
         {registerForm[count]}
       </Form>
@@ -37,4 +50,14 @@ const index = () => {
   );
 };
 
-export default index;
+index.propTypes = {
+  register: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  register: (credentials) => dispatch(register(credentials)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);
