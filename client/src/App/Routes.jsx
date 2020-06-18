@@ -7,6 +7,7 @@ import Determinant from "./Determinant";
 
 import Login from "pages/Guest/Login";
 import Register from "pages/Guest/Register";
+import Verification from "pages/Guest/Verification";
 
 const Routes = () => {
   return (
@@ -18,6 +19,7 @@ const Routes = () => {
 
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+      <Route path="/verification" component={Verification} />
     </Router>
   );
 };

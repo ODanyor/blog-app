@@ -7,8 +7,7 @@ const { JWT_token_encrypted, JWT_token_decrypted } = require("../utils/token");
 const { updatePostAuthor } = require("./post");
 const { updateCommentAuthor } = require("./comment");
 const { updateLikeAuthor } = require("./like");
-const { send_mail } = require("../utils/mail");
-const { upload } = require("../utils/storage");
+const { sendMail } = require("../utils/mail");
 
 exports.getAccountCredentials = (req, res) => {
   User.findById(req.id)
@@ -95,21 +94,19 @@ exports.signUp = (res, credentilas, email_verification) => {
           )
           .catch((err) => res.status(500).json({ error: err.code }));
       } else {
-        const random_number = Math.floor(Math.random() * 1000000);
+        const random_number = Math.floor(Math.random() * 1000000).toString();
         const secret_code_token = JWT_token_encrypted(
           { secret_code: random_number },
           "2m"
         );
 
-        send_mail(
+        sendMail(
           new_user.email,
           "Email address verification",
           "Prove your email address via this secret code.",
           `This secret code expires after 2 minutes: ${random_number}`
         )
-          .then(() =>
-            res.status(200).json({ email_verification: secret_code_token })
-          )
+          .then(() => res.status(200).json({ secret_code_token }))
           .catch((err) => res.status(500).json({ error: err }));
       }
     })

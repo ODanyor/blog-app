@@ -19,10 +19,27 @@ export const login = (credentials) => async (dispatch) => {
 };
 
 export const register = (credentials) => async (dispatch) => {
+  dispatch({ type: TYPE.SET_REQUEST });
   await api
-    .post("/api/user/sign_up", { credentials })
-    .then(({ data }) => console.log("Token: ", data))
-    .catch(({ response }) =>
-      dispatch({ type: TYPE.SET_ERRORS, payload: response.data })
-    );
+    .post("/api/user/sign_up", credentials)
+    .then(({ data }) => {
+      dispatch({
+        type: TYPE.SET_POCKET,
+        payload: { ...credentials, secret_code_token: data.secret_code_token },
+      });
+      dispatch({ type: TYPE.SET_REQUEST });
+      if (data.token) {
+        dispatch({
+          type: TYPE.SET_POCKET,
+          payload: null,
+        });
+        storeAuthToken(data.token);
+        return history.push("/");
+      }
+      history.push("/verification");
+    })
+    .catch(({ response }) => {
+      dispatch({ type: TYPE.SET_ERRORS, payload: response.data });
+      dispatch({ type: TYPE.SET_REQUEST });
+    });
 };

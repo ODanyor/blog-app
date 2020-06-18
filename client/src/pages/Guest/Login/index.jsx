@@ -1,6 +1,6 @@
 import React from "react";
+import { FormPage } from "pages/Guest/styles";
 import {
-  LoginPage,
   LoginPageIcon,
   LoginPageTitle,
   LoginPageLinks,
@@ -22,7 +22,7 @@ const index = ({ login }) => {
   const submitHandle = (data) => login(data);
 
   return (
-    <LoginPage>
+    <FormPage>
       <LoginPageIcon>
         {"<"}
         <BackButton icon="📣" />
@@ -40,7 +40,7 @@ const index = ({ login }) => {
           <LoginPageLink>Don't have an account?</LoginPageLink>
         </Link>
       </LoginPageLinks>
-    </LoginPage>
+    </FormPage>
   );
 };
 

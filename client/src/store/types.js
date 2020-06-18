@@ -6,3 +6,4 @@ export const SET_REQUEST = "SET_REQUEST";
 // User types
 export const SET_AUTHENTCATED = "SET_AUTHENTCATED";
 export const SET_UNAUTHENTCATED = "SET_UNAUTHENTCATED";
+export const SET_POCKET = "SET_POCKET";

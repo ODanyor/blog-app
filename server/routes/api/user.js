@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { authenticated } = require("../../utils/auth");
+const { upload } = require("../../utils/storage");
 
 // Functions
 const {

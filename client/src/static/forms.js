@@ -26,11 +26,18 @@ export const registerForm = [
       index: "full_name",
     },
     {
-      name: "avatar",
-      placeholder: "",
-      title: "Profile image",
-      type: "file",
-      index: "avatar",
+      name: "bio",
+      placeholder: "Optional",
+      title: "Bio",
+      type: "text",
+      index: "bio",
+    },
+    {
+      name: "website",
+      placeholder: "Optional",
+      title: "Website",
+      type: "text",
+      index: "website",
     },
   ],
   // Registration step - 2
@@ -57,4 +64,14 @@ export const registerForm = [
       index: "confirmPassword",
     },
   ],
+];
+
+export const verificationForm = [
+  {
+    name: "secret_code",
+    placeholder: "",
+    title: "Email verification code",
+    type: "text",
+    index: "secret_code",
+  },
 ];

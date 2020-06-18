@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { RegisterPage, RegisterPageTitle } from "./styles";
+import { FormPage } from "pages/Guest/styles";
+import { RegisterPageTitle } from "./styles";
 
 // Components
 import { Form } from "shared/components";
@@ -30,13 +31,11 @@ const index = ({ register }) => {
         ...data,
       }));
       increment();
-    } else {
-      register({ ...credentials, ...data });
-    }
+    } else register({ credentials: { ...credentials, ...data } });
   };
 
   return (
-    <RegisterPage>
+    <FormPage>
       <RegisterPageTitle>
         Registration: Step - {count + 1} / {registerForm.length}
       </RegisterPageTitle>
@@ -46,7 +45,7 @@ const index = ({ register }) => {
       >
         {registerForm[count]}
       </Form>
-    </RegisterPage>
+    </FormPage>
   );
 };
 

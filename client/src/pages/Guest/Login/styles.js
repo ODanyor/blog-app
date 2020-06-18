@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import { color, font } from "shared/utils/styles";
 
-export const LoginPage = styled.div`
-  margin: 0 auto;
-  padding-top: 2rem;
-  max-width: 540px;
-  width: 100%;
-`;
-
 export const LoginPageIcon = styled.div`
   cursor: default;
   display: flex;
