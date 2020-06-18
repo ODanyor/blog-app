@@ -43,3 +43,14 @@ export const register = (credentials) => async (dispatch) => {
       dispatch({ type: TYPE.SET_REQUEST });
     });
 };
+
+export const getCredentials = () => async (dispatch) => {
+  await api
+    .get("/api/user/")
+    .then(({ data }) =>
+      dispatch({ type: TYPE.SET_CREDENTIALS, payload: data.data })
+    )
+    .catch(({ response }) =>
+      dispatch({ type: TYPE.SET_ERRORS, payload: response.data })
+    );
+};

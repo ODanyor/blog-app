@@ -13,6 +13,12 @@ export const userReducer = (state = initialState, action) => {
         pocket: action.payload,
       };
     }
+    case TYPE.SET_CREDENTIALS: {
+      return {
+        ...state,
+        credentials: action.payload,
+      };
+    }
     default:
       return state;
   }

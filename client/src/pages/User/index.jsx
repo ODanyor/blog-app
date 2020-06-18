@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { UserPage } from "./styles";
+
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./Routes";
 
-const index = (props) => {
+// Components
+import NavbarLeft from "./NavbarLeft";
+
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getCredentials } from "store/actions/userActions";
+
+const index = ({ getCredentials }) => {
+  useEffect(() => {
+    getCredentials();
+  }, []);
+
   return (
     <Router>
-      <h1>User account</h1>
-      <Routes />
+      <UserPage>
+        <NavbarLeft />
+        <Routes />
+      </UserPage>
     </Router>
   );
 };
 
-export default index;
+index.propTypes = {
+  getCredentials: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  getCredentials: () => dispatch(getCredentials()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);

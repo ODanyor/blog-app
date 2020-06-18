@@ -4,6 +4,7 @@ import { getStoredAuthToken } from "shared/utils/authToken";
 
 const index = () => {
   const history = useHistory();
+
   useEffect(() => {
     getStoredAuthToken()
       ? history.push("/")
