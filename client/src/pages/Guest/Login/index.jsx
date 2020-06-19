@@ -8,7 +8,7 @@ import {
 } from "./styles";
 
 // Components
-import { Form, BackButton, Link } from "shared/components";
+import { Form, LogoButton, Link } from "shared/components";
 
 // Static
 import { loginForm } from "static/forms";
@@ -25,7 +25,7 @@ const index = ({ login }) => {
     <FormPage>
       <LoginPageIcon>
         {"<"}
-        <BackButton icon="📣" />
+        <LogoButton icon="📣" />
         {"/>"}
       </LoginPageIcon>
       <LoginPageTitle>Welcome! Get login</LoginPageTitle>

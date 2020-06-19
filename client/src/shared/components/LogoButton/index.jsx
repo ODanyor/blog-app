@@ -1,8 +1,8 @@
 import React from "react";
-import { BackButton } from "./styles";
+import { LogoButton } from "./styles";
 
 const index = ({ icon }) => {
-  return <BackButton>{icon}</BackButton>;
+  return <LogoButton>{icon}</LogoButton>;
 };
 
 export default index;

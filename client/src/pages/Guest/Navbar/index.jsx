@@ -10,7 +10,7 @@ import {
 
 // Components
 import {
-  BackButton,
+  LogoButton,
   Input,
   Button,
   BurgerButton,
@@ -28,7 +28,7 @@ const index = () => {
     <Navbar>
       <NavbarItems>
         <NavbarSideItems rightSideItems={false}>
-          <BackButton icon="📣" />
+          <LogoButton icon="📣" />
           <Input icon="🔍" placeholder="Search here ..." />
         </NavbarSideItems>
         <NavbarSideItems rightSideItems={true}>

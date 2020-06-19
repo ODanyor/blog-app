@@ -4,7 +4,7 @@ import { MessagesPage } from "./styles";
 const index = () => {
   return (
     <MessagesPage>
-      <h1>Messsages ...</h1>
+      <h1>Messages ...</h1>
     </MessagesPage>
   );
 };

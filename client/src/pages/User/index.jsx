@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { UserPage } from "./styles";
+import { UserPage, SwitchAndSearch } from "./styles";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./Routes";
@@ -21,7 +21,9 @@ const index = ({ getCredentials }) => {
     <Router>
       <UserPage>
         <NavbarLeft />
-        <Routes />
+        <SwitchAndSearch>
+          <Routes />
+        </SwitchAndSearch>
       </UserPage>
     </Router>
   );

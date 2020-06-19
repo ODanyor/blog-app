@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { color, sizes, font } from "shared/utils/styles";
 
-export const BackButton = styled.div`
+export const LogoButton = styled.div`
+  margin: 10px;
   cursor: pointer;
   ${font.size(25)};
   ${sizes.backButtonSize};
@@ -15,5 +16,10 @@ export const BackButton = styled.div`
   transition: background-color var(--speed);
   &:hover {
     background-color: ${color.textMedium};
+  }
+  @media screen and (max-width: 1000px) {
+    & {
+      margin: 0;
+    }
   }
 `;
