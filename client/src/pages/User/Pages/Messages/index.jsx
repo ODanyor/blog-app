@@ -1,11 +1,13 @@
 import React from "react";
-import { MessagesPage } from "./styles";
+
+// Components
+import { PageHead } from "shared/components";
 
 const index = () => {
   return (
-    <MessagesPage>
-      <h1>Messages ...</h1>
-    </MessagesPage>
+    <React.Fragment>
+      <PageHead title="Messages" subTitle="Sub title" border={true} />
+    </React.Fragment>
   );
 };
 

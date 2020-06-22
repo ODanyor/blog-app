@@ -15,6 +15,7 @@ export default createGlobalStyle`
     /* Filters */
     --darker: 0.9;
     --lighter: 1.1;
+    --border: 1px solid ${color.backgroundLightPrimary};
   }
   
   body {

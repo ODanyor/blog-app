@@ -1,11 +1,17 @@
 import React from "react";
-import { ProfilePage } from "./styles";
+
+// Modules
+import ProfileDetails from "./Details";
+
+// Components
+import { PageHead } from "shared/components";
 
 const index = () => {
   return (
-    <ProfilePage>
-      <h1>Profile page ...</h1>
-    </ProfilePage>
+    <React.Fragment>
+      <PageHead title="Full name" subTitle="Sub title" border={true} />
+      <ProfileDetails />
+    </React.Fragment>
   );
 };
 

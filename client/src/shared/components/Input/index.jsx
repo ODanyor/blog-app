@@ -7,7 +7,9 @@ const index = ({ icon, placeholder }) => {
 
   return (
     <Input focused={focused}>
-      <InputIcon>{icon}</InputIcon>
+      <InputIcon>
+        <img alt="icon" src={icon} width="20" height="20" />
+      </InputIcon>
       <InputField
         placeholder={placeholder}
         onFocus={focusHandle}

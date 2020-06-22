@@ -17,6 +17,9 @@ import {
   Link,
 } from "shared/components";
 
+// Icons
+import { search } from "static/icons";
+
 // Hooks
 import { useOutsideClickHandle } from "shared/hooks";
 
@@ -29,7 +32,7 @@ const index = () => {
       <NavbarItems>
         <NavbarSideItems rightSideItems={false}>
           <LogoButton icon="📣" />
-          <Input icon="🔍" placeholder="Search here ..." />
+          <Input icon={search} placeholder="Search here ..." />
         </NavbarSideItems>
         <NavbarSideItems rightSideItems={true}>
           <Link to="/login">

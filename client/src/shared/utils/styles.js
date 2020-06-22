@@ -29,6 +29,9 @@ export const sizes = {
 
   navbarWidth: 990,
   navbarHeight: 54,
+
+  middleResponsive: "1200px",
+  mobileResponsive: "850px",
 };
 
 export const font = {

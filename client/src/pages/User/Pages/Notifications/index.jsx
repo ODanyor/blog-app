@@ -1,11 +1,13 @@
 import React from "react";
-import { NotificationsPage } from "./styles";
+
+// Components
+import { PageHead } from "shared/components";
 
 const index = () => {
   return (
-    <NotificationsPage>
-      <h1>Notifications page ...</h1>
-    </NotificationsPage>
+    <React.Fragment>
+      <PageHead title="Notifications" subTitle="Sub title" border={true} />
+    </React.Fragment>
   );
 };
 

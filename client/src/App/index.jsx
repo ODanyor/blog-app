@@ -10,7 +10,6 @@ const index = () => {
     <React.Fragment>
       <Routes />
       <BaseStyles />
-      <h1>🚧 Project is under build 🔨</h1>
     </React.Fragment>
   );
 };

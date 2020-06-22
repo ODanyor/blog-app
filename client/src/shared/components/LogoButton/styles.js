@@ -17,9 +17,4 @@ export const LogoButton = styled.div`
   &:hover {
     background-color: ${color.textMedium};
   }
-  @media screen and (max-width: 1000px) {
-    & {
-      margin: 0;
-    }
-  }
 `;

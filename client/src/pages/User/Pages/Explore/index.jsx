@@ -1,11 +1,13 @@
 import React from "react";
-import { ExplorePage } from "./styles";
+
+// Components
+import { PageHead } from "shared/components";
 
 const index = () => {
   return (
-    <ExplorePage>
-      <h1>Explore page ...</h1>
-    </ExplorePage>
+    <React.Fragment>
+      <PageHead title="Explore" subTitle="Sub title" border={true} />
+    </React.Fragment>
   );
 };
 

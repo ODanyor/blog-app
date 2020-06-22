@@ -4,6 +4,7 @@ export { default as bell } from "./bell.png";
 export { default as gear } from "./gear.png";
 export { default as home } from "./house.png";
 export { default as heart } from "./heart.png";
+export { default as search } from "./search.png";
 export { default as heart2 } from "./heart (1).png";
 export { default as profile } from "./profile.png";
 export { default as comment } from "./comment.png";
