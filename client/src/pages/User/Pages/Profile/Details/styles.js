@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color } from "shared/utils/styles";
+import { font, color } from "shared/utils/styles";
 
 export const ProfileDetails = styled.div``;
 
@@ -22,3 +22,16 @@ export const ProfileContent = styled.div`
 `;
 
 export const ProfileCredentials = styled.div``;
+
+export const JoinedCredentials = styled.div`
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  ${font.size(13)};
+  ${font.bold};
+  color: ${color.textLight};
+  img {
+    margin-right: 5px;
+  }
+`;

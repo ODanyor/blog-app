@@ -9,3 +9,4 @@ export { default as heart2 } from "./heart (1).png";
 export { default as profile } from "./profile.png";
 export { default as comment } from "./comment.png";
 export { default as bookmark } from "./bookmark.png";
+export { default as calendar } from "./calendar.png";
