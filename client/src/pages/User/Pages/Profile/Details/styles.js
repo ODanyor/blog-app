@@ -12,26 +12,51 @@ export const BackgroundImg = styled.div`
   &:before {
     content: "";
     display: block;
-    padding-top: 30%;
   }
 `;
 
 export const ProfileContent = styled.div`
+  padding: 15px;
   display: flex;
   justify-content: space-between;
 `;
 
-export const ProfileCredentials = styled.div``;
+export const ProfileCredentials = styled.div`
+  position: relative;
+  ${font.size(13)};
+`;
+
+export const AvatarContainer = styled.div`
+  position: relative;
+  width: 30%;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 50%;
+  &:after {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+`;
 
 export const JoinedCredentials = styled.div`
-  padding: 0 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${font.size(13)};
+
   ${font.bold};
   color: ${color.textLight};
+
   img {
     margin-right: 5px;
+  }
+`;
+
+export const FollowingAndFollowers = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  * {
+    margin-right: 15px;
   }
 `;

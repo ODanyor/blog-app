@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 // Modules
 import ProfileDetails from "./Details";
@@ -6,13 +7,34 @@ import ProfileDetails from "./Details";
 // Components
 import { PageHead } from "shared/components";
 
-const index = () => {
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+const index = ({ user }) => {
+  const { credentials } = user;
+  const { user_id } = useParams();
+
+  // TODO: get user credentials using params user_id
+
   return (
-    <React.Fragment>
-      <PageHead title="Full name" subTitle="Sub title" border={true} />
-      <ProfileDetails />
-    </React.Fragment>
+    <Fragment>
+      <PageHead
+        title={credentials.full_name}
+        subTitle="0 posts"
+        border={true}
+      />
+      <ProfileDetails credentials={credentials} />
+    </Fragment>
   );
 };
 
-export default index;
+index.propTypes = {
+  user: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(index);
